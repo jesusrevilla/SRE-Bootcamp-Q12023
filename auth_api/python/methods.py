@@ -26,6 +26,13 @@ def encode_ywt(role):
         algorithm="HS256"
     )
 
+def decode_jwt(encoded):
+    return jwt.decode(
+        encoded,
+        "my2w7wjd7yXF64FIADfJxNs1oupTGAuW",
+        algorithms=["HS256"]
+    )
+
 class Token:
 
     def generate_token(self, username, password):
@@ -46,7 +53,15 @@ class Token:
 class Restricted:
 
     def access_data(self, authorization):
-        return 'test'
+        if "." in authorization and " " in authorization:
+            auth_lst = authorization.split()
+            decoded = decode_jwt(auth_lst[1])
+        else:
+            decoded = {'role': ""}
+        if decoded['role'] in ['admin', 'editor', 'viewer']:
+            return "You are under protected data"
+        else:
+            return "Incorrect access token"
     
 class Database:
 
