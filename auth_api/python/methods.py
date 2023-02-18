@@ -53,6 +53,8 @@ class Token:
 class Restricted:
 
     def access_data(self, authorization):
+        if "Bearer " in authorization:
+            authorization = authorization.replace("Bearer ", "")
         if "." in authorization:
             decoded = decode_jwt(authorization)
         else:

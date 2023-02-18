@@ -1,7 +1,7 @@
 # Implementation Checklist
-- [x] API Code
-- [ ] Services Code
-- [ ] Unit-tests
+- [X] API Code
+- [X] Services Code
+- [X] Unit-tests
 - [ ] Dockerfile
 - [ ] It Compiles
 - [ ] It runs
