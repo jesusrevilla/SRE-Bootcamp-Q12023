@@ -2,9 +2,9 @@
 - [X] API Code
 - [X] Services Code
 - [X] Unit-tests
-- [ ] Dockerfile
-- [ ] It Compiles
-- [ ] It runs
+- [X] Dockerfile
+- [X] It Compiles
+- [X] It runs
 
 # Api Services
 - Receives a valid username and password and returns a JWT.
