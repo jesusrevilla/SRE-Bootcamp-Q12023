@@ -53,9 +53,8 @@ class Token:
 class Restricted:
 
     def access_data(self, authorization):
-        if "." in authorization and " " in authorization:
-            auth_lst = authorization.split()
-            decoded = decode_jwt(auth_lst[1])
+        if "." in authorization:
+            decoded = decode_jwt(authorization)
         else:
             decoded = {'role': ""}
         if decoded['role'] in ['admin', 'editor', 'viewer']:
@@ -89,17 +88,3 @@ class Database:
 
         finally:
             self.con.close()
-
-
-    
-if __name__ == '__main__':
-    # db = Database()
-    # r = db.query_user('admin')
-    # print(r['password'])
-    # e = 'secret' + r['salt']
-    # e = e.encode("utf-8")
-    # e_hex = hashlib.sha512(e).hexdigest()
-    # print(r['password'] == e_hex)
-    t = Token()
-    token = t.generate_token('bob', 'thisIsNotAPasswordBob')
-    print(token)
